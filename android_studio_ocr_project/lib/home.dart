@@ -85,14 +85,14 @@ class _HomeState extends State<Home> {
               ),
             ),
             Container(
-              margin: const EdgeInsets.only(top: 20, right: 140),
+              margin: const EdgeInsets.only(top: 130 , right: 0), //140 right //top 20
               child: Stack(
                 children: [
                   Center(
                     child: Image.asset(
                       'assets/pin.png',
-                      height: 240,
-                      width: 240,
+                      height: 200,
+                      width: 200,
                     ),
                   ),
                   Center(
@@ -104,9 +104,9 @@ class _HomeState extends State<Home> {
                         pickImageFromCamera();
                       },
                       child: Container(
-                        margin: const EdgeInsets.only(top: 25),
-                        width: 240,
-                        height: 200,
+                        margin: const EdgeInsets.only(top: 0),
+                        width: 100,
+                        height: 150,
                         child: image != null
                             ? Image.file(image!, width: 140, height: 192, fit: BoxFit.fill)
                             : const Icon(Icons.camera_enhance_sharp, size: 100, color: Colors.grey),
