@@ -121,7 +121,7 @@ class _HomeState extends State<Home> {
               ],
             ),
             Positioned(
-              top: 20,
+              bottom: 20,
               left: 20,
               child: Container(
                 decoration: BoxDecoration(
@@ -137,7 +137,12 @@ class _HomeState extends State<Home> {
                       MaterialPageRoute(builder: (context) => Settings()),
                     );
                   },
-                  icon: Image.asset('assets/settings.png'),
+                  icon: Image.asset(
+                    'assets/settings.png',
+                    width: 50,
+                    height: 50,
+                  ),
+                  //iconSize: 1,
                 ),
               ),
             ),
