@@ -158,10 +158,10 @@ class _HomeState extends State<Home> {
 
               ),
             ),
-            Positioned(
+            const Positioned(
               bottom: 200,
               left: 240,
-              child: ViewFolder(context: context),
+              child: ViewFolder(),
             ),
 
             Positioned(

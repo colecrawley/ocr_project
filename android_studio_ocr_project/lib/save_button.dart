@@ -5,7 +5,7 @@ import 'package:path_provider/path_provider.dart';
 class SaveButton extends StatelessWidget {
   final File? image; // Image to save
 
-  const SaveButton({required this.image, Key? key}) : super(key: key);
+  const SaveButton({required this.image, super.key});
 
   @override
   Widget build(BuildContext context) {
