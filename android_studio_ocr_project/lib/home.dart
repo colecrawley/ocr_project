@@ -6,6 +6,7 @@ import 'settings_button.dart'; // Import the Settings screen
 import 'phone_gallery.dart'; // Import the bottom left button
 import 'camera.dart'; // Import the bottom middle button
 import 'saved_notes.dart'; // Import the bottom right button
+import 'save_button.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -101,23 +102,21 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       Center(
-                        child: TextButton(
-                          onPressed: () {
-                            pickImageFromGallery();
-                          },
-                          onLongPress: () {
-                            pickImageFromCamera();
-                          },
-                          child: Container(
-                            margin: const EdgeInsets.only(top: 0),
-                            width: 100,
-                            height: 150,
-                            child: image != null
-                                ? Image.file(image!, width: 140, height: 192, fit: BoxFit.fill)
-                                : const Icon(Icons.camera_enhance_sharp, size: 100, color: Colors.grey),
-                          ),
+                        child: Container(
+                          margin: const EdgeInsets.only(top: 0),
+                          width: 100,
+                          height: 150,
+                          child: image != null
+                              ? Image(
+                            image: FileImage(image!),
+                            width: 140,
+                            height: 192,
+                            fit: BoxFit.fill,
+                          )
+                              : Container(), // Empty container when no image is selected
                         ),
                       ),
+
                     ],
                   ),
                 ),
@@ -128,14 +127,19 @@ class _HomeState extends State<Home> {
               left: 50,
               child: PhoneGallery(
                 onPressed: pickImageFromGallery,
+                pickImageFromGallery: pickImageFromGallery,
+
               ),
+
             ),
             Positioned( //phone camera button
               bottom: 20,
               left: 200,
               child: Camera(
                 onPressed: pickImageFromCamera,
+                pickImageFromCamera: pickImageFromCamera,
               ),
+
             ),
             Positioned( //saved notes button
               bottom: 20,
@@ -145,6 +149,16 @@ class _HomeState extends State<Home> {
                   // Add functionality for the Saved Notes button
                 },
               ),
+            ),
+            Positioned( //SAVE IMAGE BUTTON-------------------------------
+              bottom: 200,
+              left: 200,
+              child: SaveButton(
+                //you'll need to change this
+                onPressed: pickImageFromCamera,
+                //pickImageFromCamera: pickImageFromCamera,
+              ),
+
             ),
             Positioned(
               top: 20,
