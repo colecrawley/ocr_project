@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'home.dart';
 
-class Camera extends StatelessWidget {
+class SaveButton extends StatelessWidget {
   final VoidCallback onPressed;
-  final Function() pickImageFromCamera;
+  //final Function() pickImageFromCamera;
 
-  const Camera({required this.onPressed, required this.pickImageFromCamera});
+  const SaveButton({required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
     return IconButton(
       onPressed: () {
         // Add functionality for the Camera button
-        pickImageFromCamera();
+        //pickImageFromCamera();
       },
       icon: Image.asset(
         'assets/camera_icon.png',
