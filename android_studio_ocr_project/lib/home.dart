@@ -127,18 +127,14 @@ class _HomeState extends State<Home> {
               bottom: 20,
               left: 50,
               child: PhoneGallery(
-                onPressed: () {
-                  // Add functionality for the Phone Gallery button
-                },
+                onPressed: pickImageFromGallery,
               ),
             ),
             Positioned( //phone camera button
               bottom: 20,
               left: 200,
               child: Camera(
-                onPressed: () {
-                  // Add functionality for the Camera button
-                },
+                onPressed: pickImageFromCamera,
               ),
             ),
             Positioned( //saved notes button
@@ -154,10 +150,10 @@ class _HomeState extends State<Home> {
               top: 20,
               right: 20,
               child: Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.white,
-                ),
+                //decoration: BoxDecoration(
+                //shape: BoxShape.circle,
+                //color: Colors.white,
+                //),
                 padding: const EdgeInsets.all(8),
                 child: IconButton(
                   onPressed: () {
