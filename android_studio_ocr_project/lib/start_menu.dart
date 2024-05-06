@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'home.dart';
 
 class StartMenu extends StatelessWidget {
-  const StartMenu({Key? key}) : super(key: key);
+  const StartMenu({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/back.png'),
             fit: BoxFit.cover,
@@ -25,12 +25,12 @@ class StartMenu extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const Home()),
                 );
               },
-              child: const Text('Start'),
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10), // Adjust the value as needed
                 ),
               ),
+              child: const Text('Start'),
             ),
           ),
         ),

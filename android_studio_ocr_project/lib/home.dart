@@ -7,9 +7,10 @@ import 'phone_gallery.dart'; // Import the bottom left button
 import 'camera.dart'; // Import the bottom middle button
 import 'saved_notes.dart'; // Import the bottom right button
 import 'save_button.dart';
+import 'notes_folder.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  const Home({super.key});
 
   @override
   _HomeState createState() => _HomeState();
@@ -91,7 +92,7 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 Container(
-                  margin: const EdgeInsets.only(top: 130, right: 0), //140 right //top 20
+                  margin: const EdgeInsets.only(top: 110, right: 125), //140 right //top 20
                   child: Stack(
                     children: [
                       Center(
@@ -103,7 +104,7 @@ class _HomeState extends State<Home> {
                       ),
                       Center(
                         child: Container(
-                          margin: const EdgeInsets.only(top: 0),
+                          margin: const EdgeInsets.only(top: 10),
                           width: 100,
                           height: 150,
                           child: image != null
@@ -141,25 +142,28 @@ class _HomeState extends State<Home> {
               ),
 
             ),
-            Positioned( //saved notes button
+            Positioned( //saved notes button with clipboard functionality
               bottom: 20,
               right: 40,
-              child: SavedNotes(
-                onPressed: () {
-                  // Add functionality for the Saved Notes button
-                },
-              ),
-            ),
-            Positioned( //SAVE IMAGE BUTTON-------------------------------
-              bottom: 200,
-              left: 200,
-              child: SaveButton(
-                //you'll need to change this
-                onPressed: pickImageFromCamera,
-                //pickImageFromCamera: pickImageFromCamera,
+              child: SavedNotesButton(
+                result: result,
               ),
 
             ),
+            Positioned( // Save Notes to Folder-------------------------------
+              bottom: 120,
+              left: 240,
+              child: SaveButton(
+                image: image, // Pass the image variable here
+
+              ),
+            ),
+            const Positioned(
+              bottom: 200,
+              left: 240,
+              child: ViewFolder(),
+            ),
+
             Positioned(
               top: 20,
               right: 20,
@@ -174,7 +178,7 @@ class _HomeState extends State<Home> {
                     // Navigate to settings screen
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Settings()),
+                      MaterialPageRoute(builder: (context) => const Settings()),
                     );
                   },
                   icon: Image.asset(
