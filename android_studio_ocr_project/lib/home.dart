@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
-import 'settings.dart'; // Import the Settings screen
+import 'settings_button.dart'; // Import the Settings screen
 import 'phone_gallery.dart'; // Import the bottom left button
 import 'camera.dart'; // Import the bottom middle button
 import 'saved_notes.dart'; // Import the bottom right button
