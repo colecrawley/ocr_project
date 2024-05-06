@@ -121,8 +121,8 @@ class _HomeState extends State<Home> {
               ],
             ),
             Positioned(
-              bottom: 20,
-              left: 20,
+              top: 20,
+              right: 20,
               child: Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
