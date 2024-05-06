@@ -9,7 +9,7 @@ import 'saved_notes.dart'; // Import the bottom right button
 import 'save_button.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  const Home({super.key});
 
   @override
   _HomeState createState() => _HomeState();
@@ -141,13 +141,11 @@ class _HomeState extends State<Home> {
               ),
 
             ),
-            Positioned( //saved notes button
+            Positioned( //saved notes button with clipboard functionality
               bottom: 20,
               right: 40,
-              child: SavedNotes(
-                onPressed: () {
-                  // Add functionality for the Saved Notes button
-                },
+              child: SavedNotesButton(
+                result: result,
               ),
             ),
             Positioned( //SAVE IMAGE BUTTON-------------------------------
@@ -174,7 +172,7 @@ class _HomeState extends State<Home> {
                     // Navigate to settings screen
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Settings()),
+                      MaterialPageRoute(builder: (context) => const Settings()),
                     );
                   },
                   icon: Image.asset(

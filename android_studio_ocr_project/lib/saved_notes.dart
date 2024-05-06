@@ -1,34 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-class SavedNotes extends StatelessWidget {
-  final VoidCallback onPressed;
+class SavedNotesButton extends StatelessWidget {
+  final String result;
 
-  const SavedNotes({required this.onPressed});
+  const SavedNotesButton({required this.result, super.key});
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      onPressed: () {
-        // Add functionality for the SavedNotes button
-
-        //FOR TESTING BUTTON FUNCTIONALITY can delete from here
-        //this testing shows a placeholder image
-        showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(
-              content: Image.asset('assets/placeholder.png'),
-            );
-          },
-        ); //can just click anywhere not on the image on the phone screen to exit
-        //DELETE UP TO AND INCLUDING THIS LINE FOR ADDING FUNCTIONALITY
-
-      },
-      icon: Image.asset(
-        'assets/saved_notes_icon.png',
-        width: 50,
-        height: 50,
+    return Positioned(
+      bottom: 20,
+      right: 40,
+      child: IconButton(
+        icon: Image.asset(
+          'assets/saved_notes_icon.png', // asset path
+          width: 40, // width
+          height: 40, // height
+        ),
+        onPressed: () {
+          Clipboard.setData(ClipboardData(text: result));
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Text copied to clipboard')),
+          );
+        },
       ),
     );
   }
 }
+
