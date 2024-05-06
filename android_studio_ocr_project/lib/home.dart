@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'settings.dart'; // Import the Settings screen
+import 'phone_gallery.dart'; // Import the bottom left button
+import 'camera.dart'; // Import the bottom middle button
+import 'saved_notes.dart'; // Import the bottom right button
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -120,6 +123,33 @@ class _HomeState extends State<Home> {
                 ),
               ],
             ),
+            Positioned( //phone gallery button
+              bottom: 20,
+              left: 50,
+              child: PhoneGallery(
+                onPressed: () {
+                  // Add functionality for the Phone Gallery button
+                },
+              ),
+            ),
+            Positioned( //phone camera button
+              bottom: 20,
+              left: 200,
+              child: Camera(
+                onPressed: () {
+                  // Add functionality for the Camera button
+                },
+              ),
+            ),
+            Positioned( //saved notes button
+              bottom: 20,
+              right: 40,
+              child: SavedNotes(
+                onPressed: () {
+                  // Add functionality for the Saved Notes button
+                },
+              ),
+            ),
             Positioned(
               top: 20,
               right: 20,
@@ -142,7 +172,6 @@ class _HomeState extends State<Home> {
                     width: 50,
                     height: 50,
                   ),
-                  //iconSize: 1,
                 ),
               ),
             ),
