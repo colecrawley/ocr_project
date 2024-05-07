@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'home.dart';
 
 class Camera extends StatelessWidget {
   final VoidCallback onPressed;
   final Function() pickImageFromCamera;
 
-  const Camera({required this.onPressed, required this.pickImageFromCamera});
+  const Camera({super.key, required this.onPressed, required this.pickImageFromCamera});
 
   @override
   Widget build(BuildContext context) {

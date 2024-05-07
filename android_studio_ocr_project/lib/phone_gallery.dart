@@ -4,7 +4,7 @@ class PhoneGallery extends StatelessWidget {
   final VoidCallback onPressed;
   final Function() pickImageFromGallery;
 
-  const PhoneGallery({required this.onPressed, required this.pickImageFromGallery});
+  const PhoneGallery({super.key, required this.onPressed, required this.pickImageFromGallery});
 
   @override
   Widget build(BuildContext context) {
