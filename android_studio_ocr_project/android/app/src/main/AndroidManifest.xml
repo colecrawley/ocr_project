@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="android_studio_ocr_project"
+        android:label="NoteBox"
         android:name="${applicationName}"
         android:icon="@mipmap/ocr_logo">
         <activity

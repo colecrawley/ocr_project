@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'home.dart';
 
 class StartMenu extends StatefulWidget {
-  const StartMenu({Key? key}) : super(key: key);
+  const StartMenu({super.key});
 
   @override
   _StartMenuState createState() => _StartMenuState();
@@ -17,7 +17,7 @@ class _StartMenuState extends State<StartMenu> with SingleTickerProviderStateMix
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 4), // Adjust the duration as needed
+      duration: const Duration(seconds: 4), // Adjust the duration as needed
     );
     _animation = Tween<double>(begin: 0, end: 1).animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
@@ -58,16 +58,16 @@ class _StartMenuState extends State<StartMenu> with SingleTickerProviderStateMix
                         MaterialPageRoute(builder: (context) => const Home()),
                       );
                     },
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10), // Adjust the value as needed
+                      ),
+                    ),
                     child: Image.asset(
                       'assets/ocr_logo.png', // Your logo path
                       height: 400, // Adjust height as needed
                       width: 400, // Adjust width as needed
                       fit: BoxFit.contain, // Adjust the fit as needed
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10), // Adjust the value as needed
-                      ),
                     ),
                   ),
                 ),

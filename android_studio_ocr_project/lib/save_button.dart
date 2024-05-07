@@ -23,7 +23,7 @@ class SaveButton extends StatelessWidget {
           }
         },
         style: ButtonStyle(
-          foregroundColor: MaterialStateProperty.all<Color>(Color(0xFF4586FC)), // Setting text color
+          foregroundColor: MaterialStateProperty.all<Color>(const Color(0xFF4586FC)), // Setting text color
         ),
         child: const SizedBox(
           width: 100, // Adjust width as needed

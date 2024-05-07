@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:google_ml_kit/google_ml_kit.dart';
 import 'settings_button.dart'; // Import the Settings screen
-import 'phone_gallery.dart'; // Import the bottom left button
-import 'camera.dart'; // Import the bottom middle button
-import 'start_menu.dart'; // Import the StartMenu screen
+// Import the bottom left button
+// Import the bottom middle button
+// Import the StartMenu screen
 import 'saved_notes.dart'; // Import the bottom right button
 import 'save_button.dart';
 import 'photo_grid.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  const Home({super.key});
 
   @override
   _HomeState createState() => _HomeState();
@@ -70,7 +70,7 @@ class _HomeState extends State<Home> {
             // Add vertical padding
             child: Container(
               height: 60,
-              color: Color(0xFFF4F4F8), // Top bar color using hex code
+              color: const Color(0xFFF4F4F8), // Top bar color using hex code
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -79,7 +79,7 @@ class _HomeState extends State<Home> {
                       Navigator.pop(
                           context); // Navigate back to the previous screen
                     },
-                    icon: Icon(Icons.arrow_back),
+                    icon: const Icon(Icons.arrow_back),
                   ),
                   IconButton(
                     onPressed: () {
@@ -90,7 +90,7 @@ class _HomeState extends State<Home> {
                             builder: (context) => const Settings()),
                       );
                     },
-                    icon: Icon(Icons.settings),
+                    icon: const Icon(Icons.settings),
                   ),
                 ],
               ),
@@ -135,7 +135,7 @@ class _HomeState extends State<Home> {
                       child: Center(
                         child: image != null
                             ? null
-                            : Text(
+                            : const Text(
                           'No image selected',
                           style: TextStyle(fontSize: 16),
                         ),
@@ -153,7 +153,7 @@ class _HomeState extends State<Home> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 SavedNotesButton(result: result),
-                SizedBox(width: 16), // Add spacing between buttons
+                const SizedBox(width: 16), // Add spacing between buttons
                 SaveButton(image: image),
               ],
             ),
@@ -163,7 +163,7 @@ class _HomeState extends State<Home> {
             padding: const EdgeInsets.symmetric(vertical: 8.0),
             // Add vertical padding
             child: Container(
-              color: Color(0xFFF4F4F8), // Bottom bar color using hex code
+              color: const Color(0xFFF4F4F8), // Bottom bar color using hex code
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
