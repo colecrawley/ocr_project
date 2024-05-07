@@ -4,7 +4,7 @@ import 'package:photo_view/photo_view.dart';
 class ImageViewer extends StatelessWidget {
   final ImageProvider imageProvider;
 
-  const ImageViewer({required this.imageProvider, Key? key}) : super(key: key);
+  const ImageViewer({required this.imageProvider, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class ImageViewer extends StatelessWidget {
       body: Center(
         child: PhotoView(
           imageProvider: imageProvider,
-          backgroundDecoration: BoxDecoration(color: Colors.black),
+          backgroundDecoration: const BoxDecoration(color: Colors.black),
         ),
       ),
     );

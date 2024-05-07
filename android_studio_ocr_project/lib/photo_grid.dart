@@ -4,7 +4,7 @@ import 'package:path_provider/path_provider.dart';
 import 'image_viewer.dart';
 
 class PhotoGrid extends StatefulWidget {
-  const PhotoGrid({Key? key}) : super(key: key);
+  const PhotoGrid({super.key});
 
   @override
   _PhotoGridState createState() => _PhotoGridState();
@@ -22,7 +22,7 @@ class _PhotoGridState extends State<PhotoGrid> {
 
   Future<void> _loadImages() async {
     final directory = await getExternalStorageDirectory();
-    final folderPath = directory!.path + '/Pictures/saved_notes';
+    final folderPath = '${directory!.path}/Pictures/saved_notes';
     final folder = Directory(folderPath);
     if (await folder.exists()) {
       setState(() {
@@ -37,7 +37,7 @@ class _PhotoGridState extends State<PhotoGrid> {
     return Scaffold(
       appBar: AppBar(title: const Text('Saved Notes')),
       body: isLoading
-          ? Center(
+          ? const Center(
         child: CircularProgressIndicator(), // Show loading indicator
       )
           : GridView.builder(
@@ -64,7 +64,7 @@ class _PhotoGridState extends State<PhotoGrid> {
                   top: 4,
                   right: 4,
                   child: IconButton(
-                    icon: Icon(Icons.delete),
+                    icon: const Icon(Icons.delete),
                     onPressed: () {
                       _deleteImage(images[index]);
                     },
@@ -83,8 +83,5 @@ class _PhotoGridState extends State<PhotoGrid> {
     setState(() {
       images.remove(image);
     });
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Image deleted')),
-    );
   }
 }

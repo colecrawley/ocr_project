@@ -22,6 +22,9 @@ class SaveButton extends StatelessWidget {
             );
           }
         },
+        style: ButtonStyle(
+          foregroundColor: MaterialStateProperty.all<Color>(const Color(0xFF4586FC)), // Setting text color
+        ),
         child: const SizedBox(
           width: 100, // Adjust width as needed
           height: 50, // Adjust height as needed
@@ -49,8 +52,6 @@ class SaveButton extends StatelessWidget {
     }
     final newImagePath = '$newPath/note_${DateTime.now().millisecondsSinceEpoch}.jpg';
     await image.copy(newImagePath);
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Image saved to $newImagePath')),
-    );
+
   }
 }

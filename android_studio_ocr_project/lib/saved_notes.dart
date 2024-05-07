@@ -11,18 +11,26 @@ class SavedNotesButton extends StatelessWidget {
     return Positioned(
       bottom: 20,
       right: 40,
-      child: IconButton(
-        icon: Image.asset(
-          'assets/saved_notes_icon.png', // asset path
-          width: 40, // width
-          height: 40, // height
-        ),
+      child: ElevatedButton(
         onPressed: () {
           Clipboard.setData(ClipboardData(text: result));
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('Text copied to clipboard')),
           );
         },
+        style: ButtonStyle(
+          foregroundColor: MaterialStateProperty.all<Color>(const Color(0xFF4586FC)),
+        ),
+        child: const SizedBox(
+          width: 100,
+          height: 50,
+          child: Center(
+            child: Text(
+              'Copy',
+              style: TextStyle(fontSize: 18),
+            ),
+          ),
+        ),
       ),
     );
   }
