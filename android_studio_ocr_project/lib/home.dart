@@ -10,7 +10,6 @@ import 'saved_notes.dart'; // Import the bottom right button
 import 'save_button.dart';
 import 'photo_grid.dart';
 
-
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -164,7 +163,6 @@ class _HomeState extends State<Home> {
             padding: const EdgeInsets.symmetric(vertical: 8.0),
             // Add vertical padding
             child: Container(
-              height: 60,
               color: Color(0xFFF4F4F8), // Bottom bar color using hex code
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -204,6 +202,3 @@ class _HomeState extends State<Home> {
     );
   }
 }
-
-
-
