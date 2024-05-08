@@ -18,7 +18,8 @@ class SaveButton extends StatelessWidget {
             _saveImage(image!, context);
           } else {
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('No image to save')),
+              const SnackBar(content: Text('No image to save')
+                  ,duration: Duration(seconds: 1))
             );
           }
         },
