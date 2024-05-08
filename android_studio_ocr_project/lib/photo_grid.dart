@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'image_viewer.dart';
-import 'home.dart'; // Import the home screen
+import 'package:gallery_saver/gallery_saver.dart'; // Import gallery_saver package
 
 class PhotoGrid extends StatefulWidget {
   final bool darkMode;
@@ -28,10 +28,24 @@ class _PhotoGridState extends State<PhotoGrid> {
     final directory = await getExternalStorageDirectory();
     final folderPath = '${directory!.path}/Pictures/saved_notes';
     final folder = Directory(folderPath);
-    if (await folder.exists()) {
+
+    // Create the folder if it doesn't exist
+    if (!(await folder.exists())) {
+      await folder.create(recursive: true);
+    }
+
+    // Check if the folder is empty
+    final files = folder.listSync().whereType<File>().toList();
+    if (files.isNotEmpty) {
       setState(() {
-        images = folder.listSync().whereType<File>().toList();
+        images = files;
         isLoading = false; // Images are loaded, set isLoading to false
+      });
+    } else {
+      // Folder is empty
+      setState(() {
+        images = [];
+        isLoading = false; // Set isLoading to false
       });
     }
   }
@@ -55,10 +69,19 @@ class _PhotoGridState extends State<PhotoGrid> {
           },
         ),
       ),
-
       body: isLoading
           ? const Center(
         child: CircularProgressIndicator(),
+      )
+          : images.isEmpty
+          ? Container(
+        color: widget.darkMode ? const Color(0xFF394048) : Color(0xFFfffbfe),
+        child: Center(
+          child: Text(
+            'No notes saved',
+            style: TextStyle(fontSize: 18, color: widget.darkMode ? Colors.white : Colors.black), // Adjust text color based on dark mode
+          ),
+        ),
       )
           : Container(
         color: widget.darkMode ? const Color(0xFF394048) : Color(0xFFfffbfe),
@@ -84,12 +107,24 @@ class _PhotoGridState extends State<PhotoGrid> {
                   Image.file(images[index]),
                   Positioned(
                     top: 4,
-                    right: 4,
+                    left: -8,
+                    child: IconButton(
+                      icon: const Icon(Icons.save),
+                      onPressed: () {
+                        _saveToGallery(images[index]);
+                      },
+                      color: widget.darkMode ? Colors.white : Colors.black,
+                    ),
+                  ),
+                  Positioned(
+                    top: 4,
+                    right: 5,
                     child: IconButton(
                       icon: const Icon(Icons.delete),
                       onPressed: () {
                         _deleteImage(images[index]);
                       },
+                      color: widget.darkMode ? Colors.white : Colors.black,
                     ),
                   ),
                 ],
@@ -101,6 +136,17 @@ class _PhotoGridState extends State<PhotoGrid> {
     );
   }
 
+
+  void _saveToGallery(File image) async {
+    await GallerySaver.saveImage(image.path);
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Image saved to gallery'),
+        duration: Duration(seconds: 1),
+      ),
+    );
+  }
+
   void _deleteImage(File image) async {
     await image.delete();
     setState(() {
@@ -108,4 +154,3 @@ class _PhotoGridState extends State<PhotoGrid> {
     });
   }
 }
-

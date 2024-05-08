@@ -15,7 +15,8 @@ class SavedNotesButton extends StatelessWidget {
         onPressed: () {
           Clipboard.setData(ClipboardData(text: result));
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Text copied to clipboard')),
+            const SnackBar(content: Text('Text copied to clipboard')
+                ,duration: Duration(seconds: 0)),
           );
         },
         style: ButtonStyle(
